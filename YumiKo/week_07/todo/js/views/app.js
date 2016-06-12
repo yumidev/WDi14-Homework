@@ -14,7 +14,7 @@ app.AppView = Backbone.View.extend({
     'keypress #new-todo': 'createOnEnter',
     'click #clear-completed': 'clearCompleted',
     'click #toggle-all': 'toggleAllComplete'
-  }
+  },
 
 
   // At initialization we bind to the relevant events on the 'Todos' collection,
@@ -30,7 +30,7 @@ app.AppView = Backbone.View.extend({
 
     // New
     this.listenTo(app.Todos, 'change:completed', this.filterOne);
-    this.listenTo(app.Todos, 'fileter', this.filterAll);
+    this.listenTo(app.Todos, 'filter', this.filterAll);
     this.listenTo(app.Todos, 'all', this.render);
 
     app.Todos.fetch();
@@ -67,7 +67,7 @@ app.AppView = Backbone.View.extend({
   // Add a single todo item to the list by creating a view for it, and appending
   // its element to the '<ul>'.
 
-  addONe: function (todo) {
+  addOne: function (todo) {
     var view = new app.TodoView({ model: todo });
     $('#todo-list').append( view.render().el );
   },
@@ -79,7 +79,7 @@ app.AppView = Backbone.View.extend({
   },
 
   // New
-  filterONe: function(todo) {
+  filterOne: function(todo) {
     todo.trigger('visible');
   },
 
